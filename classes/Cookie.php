@@ -109,18 +109,13 @@ class CookieCore
 					continue;
 				if (preg_match('/^(?:.*\.)?([^.]*(?:.{2,4})?\..{2,3})$/Ui', $shared_url, $res))
 				{
-                    // fix for single domain multi-store setup
-					// $domain = '.'.$res[1];
-                    $domain = $res[1];
+					$domain = '.'.$res[1];
 					break;
 				}
 			}
 		}
-		if (!$domain) {
-            // fix for single domain multi-store setup
-            //$domain = $out[4];
-            $domain = preg_replace('/^./', '', $out[4]);
-        }
+		if (!$domain)
+			$domain = $out[4];
 		return $domain;
 	}
 
