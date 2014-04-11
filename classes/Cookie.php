@@ -116,10 +116,9 @@ class CookieCore
 				}
 			}
 		}
-		if (!$domain){
-            // quick fix for single domain multi-store setup
-            //$domain = $out[4];
-            $domain = preg_replace('/^./', '', $out[4]);
+		if (!$domain && preg_match('/^www/', $domain)){
+            // quick fix for single domain multi-store setup with subdomain
+            $domain = $out[3];
         }
 		return $domain;
 	}
